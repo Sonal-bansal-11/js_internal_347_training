@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        /* --- MODERN CSS STYLING --- */
+        :root {
+            --primary-color: #6366f1; /* Modern Indigo */
+            --primary-hover: #4f46e5;
+            --success-color: #10b981; /* Green */
+            --error-color: #ef4444;   /* Red */
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Card Container */
+        .container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Form Group Layout */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Input Styling */
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Radio Buttons Group */
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .radio-group label {
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 0.85rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Validation Error Message Styling */
+        .error-msg {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+
+        /* Output Section */
+        #outputSection {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #e5e7eb;
+            display: none; /* Hidden until success */
+        }
+
+        .success-message {
+            color: var(--success-color);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            background: #ecfdf5;
+            padding: 10px;
+            border-radius: var(--border-radius);
+        }
+
+        .output-data p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .output-label {
+            font-weight: 600;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Registration</h2>
+        
+        <form id="studentForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+                <div class="error-msg" id="nameError">Name cannot be empty</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="example@mail.com">
+                <div class="error-msg" id="emailError">Please enter a valid email</div>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+                <div class="error-msg" id="genderError">Please select a gender</div>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select id="course">
+                    <option value="">-- Select a Course --</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="C++">C++</option>
+                </select>
+                <div class="error-msg" id="courseError">Please select a course</div>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms">
+                <label for="terms">I accept the Terms & Conditions</label>
+            </div>
+            <div class="error-msg" id="termsError" style="display:none; margin-top:0;">You must accept the terms</div>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <div id="outputSection">
+            <div class="success-message">Registration Successful!</div>
+            <div class="output-data" id="outputData">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // --- JAVASCRIPT LOGIC ---
+
+        const form = document.getElementById('studentForm');
+        const outputSection = document.getElementById('outputSection');
+        const outputData = document.getElementById('outputData');
+
+        form.addEventListener('submit', function(event) {
+            // 1. Prevent page reload
+            event.preventDefault();
+
+            // Clear previous errors/output
+            resetErrors();
+            outputSection.style.display = 'none';
+
+            // Gather inputs
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const genderSrc = document.querySelector('input[name="gender"]:checked');
+            const course = document.getElementById('course').value;
+            const terms = document.getElementById('terms').checked;
+
+            let isValid = true;
+
+            // --- VALIDATION RULES ---
+
+            // 1. Name should not be empty
+            if (name === "") {
+                showError('nameError');
+                isValid = false;
+            }
+
+            // 2. Email should be valid (Basic Regex)
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                showError('emailError');
+                isValid = false;
+            }
+
+            // 3. Gender must be selected
+            if (!genderSrc) {
+                showError('genderError');
+                isValid = false;
+            }
+
+            // 4. Course must be selected
+            if (course === "") {
+                showError('courseError');
+                isValid = false;
+            }
+
+            // 5. Terms checkbox must be checked
+            if (!terms) {
+                const termsErr = document.getElementById('termsError');
+                termsErr.style.display = 'block';
+                isValid = false;
+            }
+
+            // --- ON SUCCESSFUL SUBMISSION ---
+            if (isValid) {
+                const gender = genderSrc.value;
+
+                // Create the output HTML
+                const outputHTML = `
+                    <p><span class="output-label">Name:</span> ${name}</p>
+                    <p><span class="output-label">Email:</span> ${email}</p>
+                    <p><span class="output-label">Gender:</span> ${gender}</p>
+                    <p><span class="output-label">Course:</span> ${course}</p>
+                `;
+
+                // Display data below form
+                outputData.innerHTML = outputHTML;
+                outputSection.style.display = 'block';
+
+                // Optional: Scroll to bottom to see result
+                outputSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Clear form (Optional, depending on preference)
+                // form.reset(); 
+            }
+        });
+
+        // Helper function to show error messages
+        function showError(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        // Helper function to reset all error messages
+        function resetErrors() {
+            const errors = document.querySelectorAll('.error-msg');
+            errors.forEach(err => err.style.display = 'none');
+        }
+    </script>
+</body>
+</html>

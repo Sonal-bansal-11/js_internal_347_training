@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Project Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>University Portal Project</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="#">Gallery</a>
+            <a href="#">Academics</a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        
+        <section class="card info-section">
+            <h3>Latest Updates</h3>
+            <div class="content">
+                <p>Welcome to the new semester portal.</p>
+                <p>Check your syllabus regularly.</p>
+                <p>Library hours have changed.</p>
+                <p>Sports registration is open.</p>
+                <p>Scholarship forms available.</p>
+                <p>Campus wifi updated.</p>
+                <p>Guest lecture on Friday.</p>
+            </div>
+        </section>
+
+        <section class="card notice-section">
+            <h3>Important Notices</h3>
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <div class="notice-item">🔴 Exam Schedule Released</div>
+                    <div class="notice-item">🔵 Holiday on Monday</div>
+                    <div class="notice-item">🟢 New Course Added: AI/ML</div>
+                    <div class="notice-item">🟠 Fee Submission Deadline</div>
+                    <div class="notice-item">🟣 Workshop Registration</div>
+                    <div class="notice-item">🔴 Result Declared: Sem 4</div>
+                    <div class="notice-item">🔵 Hostel Form Available</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card login-section">
+            <h3>Student Login</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="loginUser" placeholder="Enter username">
+                    <small class="error-text" id="userError"></small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPass" placeholder="Enter password">
+                    <small class="error-text" id="passError"></small>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn-primary">Login</button>
+                    <button type="reset" class="btn-secondary">Cancel</button>
+                </div>
+            </form>
+            
+            <div class="signup-link">
+                <p>New here? <a href="reg.html">Create an Account</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
